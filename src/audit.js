@@ -27,7 +27,8 @@ const audit = async ({
     const dev = findings.reduce((acc, f) => acc || f.dev, false);
     const prod = findings.reduce((acc, f) => acc || f.bundled, false);
     const suffix = [prod ? 'prod' : null, dev ? 'dev' : null].filter(n => n).join(', ');
-    return `*${moduleName}* (${suffix}) - ${title}`;
+    const suffix2 = suffix ? ` (${suffix})` : '';
+    return `*${moduleName}*${suffix2} - ${title}`;
   };
   const text = severity => list
     .filter(item => item.severity === severity)

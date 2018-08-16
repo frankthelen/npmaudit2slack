@@ -29,5 +29,6 @@ program
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
     }
+    process.exit(0);
   })
   .parse(process.argv);

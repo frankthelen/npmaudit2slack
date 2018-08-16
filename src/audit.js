@@ -24,11 +24,8 @@ const audit = async ({
   const list = Object.values(advisories);
   const line = (item) => {
     const { title, module_name: moduleName, findings } = item;
-    const dev = findings.reduce((acc, f) => acc || f.dev, false);
-    const prod = findings.reduce((acc, f) => acc || f.bundled, false);
-    const suffix = [prod ? 'prod' : null, dev ? 'dev' : null].filter(n => n).join(', ');
-    const suffix2 = suffix ? ` (${suffix})` : '';
-    return `*${moduleName}*${suffix2} - ${title}`;
+    const devOnly = findings.reduce((acc, f) => acc && f.dev, true);
+    return `*${moduleName}*${devOnly ? ' (dev)' : ''} - ${title}`;
   };
   const text = severity => list
     .filter(item => item.severity === severity)

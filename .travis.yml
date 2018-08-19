@@ -9,7 +9,3 @@ sudo: false
 
 after_success:
   - npm run coveralls
-
-branches:
-  only:
-    - master

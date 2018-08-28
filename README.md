@@ -17,6 +17,11 @@ Runs `npm audit` in the current working directory and posts the results to Slack
 npm install -g npmaudit2slack
 ```
 
+Or run without installation
+```bash
+npx npmaudit2slack --help
+```
+
 ## Usage
 
 ```bash
